@@ -1,0 +1,161 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='bootstrap/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='bootstrap/css/bootstrap-grid.min.css'>
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class='row'>
+            <div class='col-md-12'>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item dropdown">
+                        <a class="btn dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            file
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"onClick='()=>{} 'id="dowload">dowload</a>
+                            <a class="dropdown-item" href="#" id="save">save</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="btn dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            edit
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="btn dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class='row' style="margin-top: 10px">
+            <div class='col-lg-3 col-md-4 col-sm-6 col-8'>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="pathFile" webkitdirectori onChange='takePath(event)' accept=".jpg,.tiff">
+                    <label class="custom-file-label" for="customFileLang">Select</label>
+                </div>
+            </div>
+        </div>
+        <div id='DowloadAndSaveImage' style="margin-top: 10px">
+
+        </div>
+    </div>
+
+    <script>
+        function takePath(event){
+            alert(event.target.value)
+        }
+        function geneficFormImage(){
+            let DowloadAndSaveImage=document.getElementById('DowloadAndSaveImage');
+            DowloadAndSaveImage.classList.toggle('pop-up');
+        }
+    </script>
+
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <!--react-->
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+     <script type="text/babel">
+
+        class DowloadAndSaveImage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            life: true,
+            dowload: true
+        }
+    }
+            takePath(event){
+            alert(event.target.value)
+        }
+    render() {
+        //document.getElementById('DowloadAndSaveImage').togl
+        if(this.state.life)
+        if(this.state.dowload){
+        return (
+        <div {...this.props}> 
+                <h3>Dowload image </h3>
+            <div className='row' >
+                <div className='col-lg-3 col-md-4 col-sm-6 col-8'>
+                    <div className="custom-file">
+                        <input type="file" className="custom-file-input" onChange={(event)=>{this.takePath(event)}}  id="pathFileDowload"  accept=".jpg"/>
+                        <label className="custom-file-label" htmlFor="customFileLang">choose</label>
+                    </div>
+                </div>
+            </div>
+        </div>)
+            }else{
+                return (
+                <div {...this.props}> 
+                    <h3>Saving image </h3>
+                <div className='row' >
+                    <div className='col-lg-3 col-md-4 col-sm-6 col-8'>
+                        <div className="custom-file">
+                            <input type="file" className="custom-file-input" id="pathFileSave" multiple onChange={(event)=>{this.takePath(event)}}  webkitdirectory='true' accept=".jpg,.tiff"/>
+                            <label className="custom-file-label" htmlFor="customFileLang">save</label>
+                        </div>
+                    </div>
+                < /div>
+            < /div>)
+            }else{
+                   return null;
+                }
+    }
+
+}
+<!--
+ReactDOM.render( 
+            <DowloadAndSaveImage /> ,
+    document.getElementById('DowloadAndSaveImage')
+);
+-->
+ function geneficFormImage(){
+            let DowloadAndSaveImage=document.getElementById('DowloadAndSaveImage');
+            DowloadAndSaveImage.classList.toggle('pop-up');
+            DowloadAndSaveImage.classList.toggle('col-lg-4');
+            ReactDOM.render( 
+            <DowloadAndSaveImage /> ,
+    document.getElementById('DowloadAndSaveImage'))
+        }
+                
+    </script>
+</body></html>
